@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analog and Digital Clock</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            background: #f0f0f0;
+        }
+
+        .clock {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border: 8px solid #333;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .clock .center {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #333;
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .hand {
+            position: absolute;
+            background: #333;
+            transform-origin: bottom center;
+            transform: translateX(-50%) rotateZ(0deg); 
+            border-radius: 6px;
+        }
+
+        .hour {
+            width: 7px;
+            height: 60px;
+            background: #333;
+            top: 80px;
+        }
+
+        .minute {
+            width: 4px;
+            height: 90px;
+            background: #666;
+            top: 52px;
+        }
+
+        .second {
+            width: 2px;
+            height: 110px;
+            background: rgb(222, 82, 43);
+            top: 30px;
+        }
+
+        .number {
+            position: absolute;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+
+        #time {
+  margin-bottom: -80px;
+  display: flex;
+  transform: translateY(15px);
+  padding: 10px 10px;
+  font-size: 2em;
+  font-weight: 600;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  border-radius: 40px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5),
+    inset 5px 5px 20px rgba(255, 255, 255, 0.2),
+    inset -5px -5px 15px rgba(0, 0, 0, 0.75);
+  margin-left: 15px;
+}
+
+#time div {
+  position: relative;
+  width: 60px;
+  text-align: center;
+  font-weight: 500;
+  color: var(--clr);
+}
+
+
+
+    
+        @media (max-width: 500px) {
+            .clock {
+                width: 200px;
+                height: 200px;
+            }
+
+            .hour {
+                height: 45px;
+                width: 5px;
+            }
+
+            .minute {
+                height: 70px;
+                width: 3px;
+            }
+
+            .second {
+                height: 90px;
+                width: 2px;
+            }
+
+            .number {
+                font-size: 1em;
+            }
+
+            .time {
+                font-size: 1.5em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .clock {
+                width: 250px;
+                height: 250px;
+            }
+
+            .hour {
+                height: 50px;
+                width: 6px;
+                top: 70px;
+                left: 50%;
+            }
+
+            .minute {
+                height: 75px;
+                width: 3px;
+                top: 45px;
+                left: 50%;
+            }
+
+            .center{
+                height: 90px;
+                width: 2px;
+                top: 90px;
+                left: 48%;
+            }
+            .second {
+                height: 90px;
+                width: 2px;
+                top: 25px;
+                left: 50%;
+            }
+            .number {
+                font-size: 1em;
+            }
+            .time {
+                font-size: 1.8em;
+            }
+        }
+        @media (max-width: 500px) {
+            .clock {
+                width: 180px;
+                height: 180px;
+            }
+
+            .hour {
+                height: 40px;
+                width: 5px;
+                top: 55px;
+                left: 50%;
+            }
+
+            .minute {
+                height: 65px;
+                width: 3px;
+                top: 35px;
+                left: 50%;
+            }
+
+            .second {
+                height: 80px;
+                width: 2px;
+                top: 20px;
+                left: 50%;
+            }
+
+            .number {
+                font-size: 0.9em;
+            }
+
+            .time {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="clock">
+            <div class="hand hour" id="hour"></div>
+            <div class="hand minute" id="minute"></div>
+            <div class="hand second" id="second"></div>
+            <div class="center"></div>
+            
+       
+            <div class="number" style="top: 3%; left: 46%;">12</div>
+            <div class="number" style="top: 13%; left: 80%;">1</div>
+            <div class="number" style="top: 31%; left: 92%;">2</div>
+            <div class="number" style="top: 46%; left: 92%;">3</div>
+            <div class="number" style="top: 65%; left: 85%;">4</div>
+            <div class="number" style="top: 82%; left: 70%;">5</div>
+            <div class="number" style="top: 90%; left: 47%;">6</div>
+            <div class="number" style="top: 80%; left: 20%;">7</div>
+            <div class="number" style="top: 60%; left: 7%;">8</div>
+            <div class="number" style="top:39%; left: 3%;">9</div>
+            <div class="number" style="top: 20%; left: 12%;">10</div>
+            <div class="number" style="top: 8%; left: 29%;">11</div>
+        </div>
+
+        <div  id = "time">
+        
+            <div id = "hours">00</div>
+            <div id = "minutes">00</div>
+            <div id = "seconds">00</div>
+            <div id = "ampm">AM</div>
+          
+          </div>    </div>
+
+    <script>
+        let hr = document.querySelector('#hour');
+        let mn = document.querySelector('#minute');
+        let sc = document.querySelector('#second');
+
+        setInterval(() => {
+            let day = new Date();
+            let hh = day.getHours() * 30; 
+            let mm = day.getMinutes() * 6; 
+            let ss = day.getSeconds() * 6; 
+
+       
+            hr.style.transform = ` rotateZ(${hh + mm / 12}deg)`;
+            mn.style.transform = ` rotateZ(${mm}deg)`;
+            sc.style.transform = ` rotateZ(${ss}deg)`;
+
+          
+            let h = day.getHours() % 12 || 12;
+            let m = day.getMinutes()
+            let s = day.getSeconds()
+
+            let amPm = day.getHours() >= 12 ? "PM" : "AM";
+
+ 
+            document.getElementById("time").innerHTML = `${h}:${m}:${s} ${amPm}`;
+        }, 1000);
+        
+    </script>
+</body>
+</html>
+
+
